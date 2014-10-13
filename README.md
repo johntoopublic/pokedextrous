@@ -1,7 +1,7 @@
 [Pokédextrous](http://johntoopublic.github.io/pokedextrous/)
 ============
 
-Pokédextrous is a simple page that allows uses caught Pokémon to generate a list of possible evolutions.
+Pokédextrous is a simple page that uses caught Pokémon to generate a list of possible evolutions. Page state is saved via the URL hash, for ease of saving and sharing.
 
 **[static](/static)** is both generated and non-generated site content, which gets pushed to the gh-pages branch:
 
