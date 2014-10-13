@@ -1,4 +1,4 @@
-[Pokédextrous](http://johntoopublic.github.io/pokedextrous/)
+[Pokédextrous](http://johntoopublic.github.io/pokedextrous/) [![weekly users](https://analytics-badge.appspot.com/badge/UA-50859182-5.svg)](https://analytics-badge.appspot.com/)
 ============
 
 Pokédextrous is a simple page that uses caught Pokémon to generate a list of possible evolutions. Page state is saved via the URL hash, for ease of saving and sharing.
