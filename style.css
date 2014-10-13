@@ -1,0 +1,76 @@
+body {
+  font: 16px sans-serif;
+}
+
+.evolve {
+  border-bottom: 1px solid #ccc;
+  padding-left: 40px;
+  text-indent: -40px;
+}
+
+.instructions {
+  margin: 40px auto;
+  min-width: 200px;
+  width: 50%;
+}
+
+.pokemon {
+  text-indent: 0;
+  cursor: pointer;
+  min-width: 120px;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.pokemon span {
+  position: relative;
+  top: 5px;
+  z-index: -1;
+}
+
+.selected {
+  border-left: #aaf 8px solid;
+}
+
+#query {
+  border: 0;
+  box-sizing: border-box;
+  font: 16px sans-serif;
+  height: 30px;
+  padding: 5px;
+  position: relative;
+  width: 100%;
+  z-index: 1;
+}
+
+#results {
+  bottom: 0;
+  overflow-y: auto;
+  position: absolute;
+  top: 30px;
+  width: 100%;
+}
+
+#search {
+  background: #fff;
+  bottom: 0;
+  box-shadow: 0 0 10px #333;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 200px;
+  z-index: 1;
+}
+
+#suggestions {
+  left: 210px;
+  position: absolute;
+}
+
+#suggestions .pokemon {
+  display: inline-block;
+}
+
+#suggestions .selected {
+  border: none;
+}
