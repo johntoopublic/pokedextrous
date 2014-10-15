@@ -7,6 +7,11 @@ Pokédextrous is a simple page that uses caught Pokémon to generate a list of p
 
     git subtree push --prefix static origin gh-pages
 
+It is then updated before pushing after subsequent commits to ***master*** with
+
+    git subtree push --prefix static . merge && git co gh-pages && \
+        git merge merge && git br -D merge
+
 **[icons.png](/static/icons.png)** was generated from [veekun's pokedex-media](http://git.veekun.com/pokedex-media.git/tree/HEAD:/pokemon/icons) via the following command:
 
     montage `ls +([0-9]).png | sort -n` -geometry +0+0 icons.png
