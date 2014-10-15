@@ -15,9 +15,12 @@ body {
 }
 
 .pokemon {
-  text-indent: 0;
+  display: block;
+  color: #000;
   cursor: pointer;
   min-width: 120px;
+  text-decoration: none;
+  text-indent: 0;
   user-select: none;
   -webkit-user-select: none;
 }
