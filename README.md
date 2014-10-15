@@ -7,7 +7,7 @@ Pokédextrous is a simple page that uses caught Pokémon to generate a list of p
 
     git subtree push --prefix static origin gh-pages
 
-It is then updated before pushing after subsequent commits to ***master*** with
+It is then updated before pushing after subsequent commits to **master** with
 
     git subtree push --prefix static . merge && git co gh-pages && \
         git merge merge && git br -D merge
