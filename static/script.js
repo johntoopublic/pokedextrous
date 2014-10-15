@@ -168,7 +168,9 @@ var toggle = function(e) {
   }
   save();
   filter();
-  query.focus();
+  if (query.value) {
+    query.focus();
+  }
 };
 
 // Attempt to allow hiding menu on touch devices.
