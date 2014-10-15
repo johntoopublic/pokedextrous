@@ -12,12 +12,13 @@ var bold = function(text, match) {
 
 var tile = function(pokemon, text) {
   text = text || pokemon.name;
-  var html = '<div data="' + pokemon.id + '" class="pokemon';
+  var html = '<a data="' + pokemon.id +
+      '" href="http://veekun.com/dex/pokemon/' +
+      pokemon.identifier + '" class="pokemon';
   if (caught[pokemon.id]) {
     html += ' selected';
   }
-  html += '"><span class="' + pokemon.identifier + '"></span>' + text +
-      '</div>';
+  html += '"><span class="' + pokemon.identifier + '"></span>' + text + '</a>';
   return html;
 }
 
@@ -156,6 +157,11 @@ var load = function() {
 }
 
 var toggle = function(e) {
+  if (e.button != 1) {
+    e.preventDefault();
+  } else {
+    return;
+  }
   var data = parseInt(e.target.getAttribute('data') ||
       e.target.parentNode.getAttribute('data'), 10);
   if (!data) {
@@ -209,8 +215,8 @@ if (mobile) {
   suggestions.style.left = '25px';
 }
 
-suggestions.addEventListener('click', toggle);
-results.addEventListener('click', toggle);
+suggestions.addEventListener('click', toggle, true);
+results.addEventListener('click', toggle, true);
 query.addEventListener('keyup', filter);
 query.focus();
 load();
