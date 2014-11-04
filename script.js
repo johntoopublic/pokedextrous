@@ -157,14 +157,11 @@ var load = function() {
 }
 
 var toggle = function(e) {
-  if (e.button != 1) {
-    e.preventDefault();
-  } else {
-    return;
-  }
   var data = parseInt(e.target.getAttribute('data') ||
       e.target.parentNode.getAttribute('data'), 10);
-  if (!data) {
+  if (data && e.button != 1) {
+    e.preventDefault();
+  } else {
     return;
   }
   if (caught[data]) {
