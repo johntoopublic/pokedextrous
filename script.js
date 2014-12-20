@@ -37,14 +37,6 @@ var choice = function(pokemon, query) {
   return html;
 };
 
-var order = function(entry) {
-  var i = 100;
-  if (entry.level) {
-    return entry.level;
-  }
-  return POKEMON[entry.id].name.charCodeAt(0);
-}
-
 var suggest = function() {
   var options = [];
   for (var id in caught) {
@@ -57,18 +49,24 @@ var suggest = function() {
     }
   }
   options.sort(function(a, b) {
-    return order(a) - order(b);
+    if (a.level || b.level) {
+      return (a.level || 100) - (b.level || 100);
+    }
+    if (a.from.name != b.from.name) {
+      return a.from.name < b.from.name ? -1 : 1;
+    }
+    return POKEMON[a.id].name < POKEMON[b.id].name ? -1 : 1;
   });
   var html = '';
   for (var option in options) {
     var entry = options[option];
     var pokemon = POKEMON[entry.id];
-    var text = entry.from.name;
+    var text = pokemon.name;
     if (entry.gender) {
       text += entry.gender == 'female' ? '\u2640' : '\u2642';
     }
-    html += '<div class="evolve">' + tile(pokemon) +
-        '<small> evolves from</small>' + tile(entry.from, text) + '<small>';
+    html += '<div class="evolve">' + tile(entry.from) +
+        '<small> evolves into</small>' + tile(pokemon, text) + '<small>';
     if (entry.via) {
       html += ' via ' + entry.via;
     }
@@ -159,11 +157,10 @@ var load = function() {
 var toggle = function(e) {
   var data = parseInt(e.target.getAttribute('data') ||
       e.target.parentNode.getAttribute('data'), 10);
-  if (data && e.button != 1) {
-    e.preventDefault();
-  } else {
+  if (!data || e.button != 0 || e.ctrlKey || e.shiftKey) {
     return;
   }
+  e.preventDefault();
   if (caught[data]) {
     delete caught[data];
   } else {
