@@ -37,14 +37,6 @@ var choice = function(pokemon, query) {
   return html;
 };
 
-var order = function(entry) {
-  var i = 100;
-  if (entry.level) {
-    return entry.level;
-  }
-  return POKEMON[entry.id].name.charCodeAt(0);
-}
-
 var suggest = function() {
   var options = [];
   for (var id in caught) {
@@ -57,7 +49,13 @@ var suggest = function() {
     }
   }
   options.sort(function(a, b) {
-    return order(a) - order(b);
+    if (a.level || b.level) {
+      return (a.level || 100) - (b.level || 100);
+    }
+    if (a.from.name != b.from.name) {
+      return a.from.name < b.from.name ? -1 : 1;
+    }
+    return POKEMON[a.id].name < POKEMON[b.id].name ? -1 : 1;
   });
   var html = '';
   for (var option in options) {
