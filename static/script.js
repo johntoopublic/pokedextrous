@@ -14,7 +14,7 @@ var tile = function(pokemon, text) {
   text = text || pokemon.name;
   var html = '<a data="' + pokemon.id +
       '" href="http://veekun.com/dex/pokemon/' +
-      pokemon.identifier + '" class="pokemon';
+      pokemon.name.toLowerCase() + '" class="pokemon';
   if (caught[pokemon.id]) {
     html += ' selected';
   }
