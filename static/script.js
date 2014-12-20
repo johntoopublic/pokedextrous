@@ -61,12 +61,12 @@ var suggest = function() {
   for (var option in options) {
     var entry = options[option];
     var pokemon = POKEMON[entry.id];
-    var text = entry.from.name;
+    var text = pokemon.name;
     if (entry.gender) {
       text += entry.gender == 'female' ? '\u2640' : '\u2642';
     }
-    html += '<div class="evolve">' + tile(pokemon) +
-        '<small> evolves from</small>' + tile(entry.from, text) + '<small>';
+    html += '<div class="evolve">' + tile(entry.from) +
+        '<small> evolves into</small>' + tile(pokemon, text) + '<small>';
     if (entry.via) {
       html += ' via ' + entry.via;
     }
