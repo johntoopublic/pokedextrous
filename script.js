@@ -157,11 +157,10 @@ var load = function() {
 var toggle = function(e) {
   var data = parseInt(e.target.getAttribute('data') ||
       e.target.parentNode.getAttribute('data'), 10);
-  if (data && e.button != 1) {
-    e.preventDefault();
-  } else {
+  if (!data || e.button != 0 || e.ctrlKey || e.shiftKey) {
     return;
   }
+  e.preventDefault();
   if (caught[data]) {
     delete caught[data];
   } else {
