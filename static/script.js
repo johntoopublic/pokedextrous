@@ -110,7 +110,11 @@ var suggest = function() {
       '</small></div>';
 }
 
-var filter = function() {
+var filter = function(e) {
+  // Clear on escape.
+  if (e && e.keyCode == 27) {
+    query.value = '';
+  }
   var html = '';
   for (var id in POKEMON) {
     html += choice(POKEMON[id], query.value);
